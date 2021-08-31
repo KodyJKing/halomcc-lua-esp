@@ -11,7 +11,8 @@ local function readMatrix3x4(address)
 end
 
 function worldToScreen(width, height)
-    local invViewMat = readMatrix3x4(getAddress("halo1.dll+1AC5174"))
+    -- local invViewMat = readMatrix3x4(getAddress("halo1.dll+1AC5174"))
+    local invViewMat = readMatrix3x4(getAddress("halo1.dll+1AD2BF4"))
     local fov = readFloat("halo1.dll+19E79E4")
     local w = 2 * math.tan(fov / 2)
 
@@ -29,7 +30,7 @@ function worldToScreen(width, height)
         local e = eyeOffset
     
         local diff = {
-            x = v.x - m[e],
+            x = v.x - m[e + 0],
             y = v.y - m[e + 1],
             z = v.z - m[e + 2]
         }
@@ -45,7 +46,7 @@ function worldToScreen(width, height)
         return {
             x = width / 2 - left,
             y = height / 2 - up,
-            depth = depth
+            depth = depth / w * width
         }
     end
 end
