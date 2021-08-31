@@ -32,14 +32,19 @@ function Overlay.create(windowClassName, windowTitle)
     overlay.Canvas = f.Canvas
     overlay.Pen = f.Canvas.Pen
     overlay.updatePosition = function()
-        getWindowRect(windowClassName, windowTitle)
+        local rect = Overlay.getWindowRect(windowClassName, windowTitle)
         f.Left = rect.left
         f.Top = rect.top
         f.Width = rect.right - rect.left
         f.Height = rect.bottom - rect.top
+    end
+    overlay.destroy = function()
+        f.destroy()
     end
 
     overlay.updatePosition()
 
     return overlay
 end
+
+return Overlay

@@ -1,0 +1,16 @@
+{
+    "Lua.diagnostics.disable": [
+        "lowercase-global"
+    ],
+    "Lua.diagnostics.globals": [
+        "findWindow",
+        "createMemoryStream",
+        "executeCodeLocalEx",
+        "createForm",
+        "readFloat",
+        "getAddress",
+        "reloadPackage",
+        "createTimer",
+        "entityList"
+    ]
+}
