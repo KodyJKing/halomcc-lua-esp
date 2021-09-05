@@ -21,7 +21,6 @@ function module.create()
         c.Font.Style = "fsBold"
         c.Font.Color = pen.Color
         c.Font.Quality = "fqNonAntialiased"
-        -- c.textOut(10, 10, "Hello?")
 
         local f = overlay.form
         local worldToScreenFunc = worldToScreen(f.Width, f.Height)
@@ -40,26 +39,27 @@ function module.create()
             local type = readSmallInteger(entityPtr + 0x0)
             local isNpc = not (readInteger(entityPtr + 0x0C) == 0xFFFFFFFF)
 
-            -- if true then
             -- if isNpc and not stale and validHealthRange then
-            if isNpc then
+            -- if isNpc then
+            if true then
                 local footPos = vector.readVec(entityPtr + 0x18)
                 local neckPos = vector.readVec(entityPtr + 0x6DC)
                 -- local neckPos = vector.readVec(entityPtr + 0x7E0)
+
                 -- When entities get in vehicles, some of their key points are not updated.
-                local dist = vector.dist(footPos, neckPos)
-                if dist > 2 then
-                    footPos = vector.addZ(neckPos, -0.5)
-                end
+                -- if vector.dist(footPos, neckPos) > 2 then
+                --     footPos = vector.addZ(neckPos, -0.5)
+                -- end
+
                 local footScreenPos = worldToScreenFunc(footPos)
                 local torsoScreenPos = worldToScreenFunc(neckPos)
                 local fp = footScreenPos
                 local np = torsoScreenPos
-                if fp.depth > 0.1 and np.depth > 0.1 then
-                    c.Line(fp.x, fp.y, np.x, np.y)
+                -- if fp.depth > 0.1 and np.depth > 0.1 then
+                if fp.depth > 0.1 then
+                    -- c.Line(fp.x, fp.y, np.x, np.y)
                     local typeStr =  string.format("%x", type):upper()
                     local textWidth = c.getTextWidth(typeStr)
-                    local textHeight = c.getTextHeight(typeStr)
                     c.textOut(fp.x - textWidth / 2, fp.y, typeStr)
                 end
             end
