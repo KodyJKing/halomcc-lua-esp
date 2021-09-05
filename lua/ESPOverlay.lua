@@ -37,6 +37,7 @@ function module.create()
             local validHealthRange = (health > 0 and health <= 1)
 
             local type = readSmallInteger(entityPtr + 0x0)
+            --local type2 = readSmallInteger(entityPtr + 0x10)
             local isNpc = not (readInteger(entityPtr + 0x0C) == 0xFFFFFFFF)
 
             -- if isNpc and not stale and validHealthRange then
@@ -58,9 +59,15 @@ function module.create()
                 -- if fp.depth > 0.1 and np.depth > 0.1 then
                 if fp.depth > 0.1 then
                     -- c.Line(fp.x, fp.y, np.x, np.y)
-                    local typeStr =  string.format("%x", type):upper()
-                    local textWidth = c.getTextWidth(typeStr)
-                    c.textOut(fp.x - textWidth / 2, fp.y, typeStr)
+
+                    local text =  string.format("%x", type):upper()
+                    local textWidth = c.getTextWidth(text)
+                    c.textOut(fp.x - textWidth / 2, fp.y, text)
+
+                    -- text =  string.format("%x", type2):upper()
+                    -- textWidth = c.getTextWidth(text)
+                    -- local textHeight = c.getTextHeight(text)
+                    -- c.textOut(fp.x - textWidth / 2, fp.y + textHeight, text)
                 end
             end
         end
