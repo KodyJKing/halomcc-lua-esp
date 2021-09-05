@@ -10,11 +10,13 @@ local posOffset = 0x18
 local velocityOffset = 0x24
 local neckOffset = 0x06DC
 
+local updatesPerSecond = 10
+-- local attraction = 10
 local attraction = 10
-local cosAngleLimit = math.cos(2 * math.pi / 24)
+local cosAngleLimit = math.cos(math.pi / 24)
+local guaranteedAttrationRange = 2
 
 function module.create()
-    local updatesPerSecond = 10
     local timer = createTimer()
     timer.setInterval(1000 / updatesPerSecond)
     timer.OnTimer = function()
@@ -31,14 +33,16 @@ function module.create()
                     function (npcPtr)
                         local npcPos = vector.readVec(npcPtr + neckOffset)
                         local diff = vector.sub(npcPos, grenadePos)
+                        local dist = vector.length(diff)
                         local diffUnit = vector.unit(diff)
                         local cosAngle = vector.dot(velUnit, diffUnit)
-                        -- if cosAngle <= cosAngleLimit then
-                            local dist = vector.length(diff)
-                            local forceScalar = attraction / updatesPerSecond / (dist * dist)
-                            local force = vector.scale(diffUnit, forceScalar)
-                            netForce = vector.add(netForce, force)
-                        -- end
+                        if (dist < guaranteedAttrationRange) or (cosAngle >= cosAngleLimit) then
+                            local forceScalar = attraction / updatesPerSecond / dist -- / (dist * dist)
+                            if not (forceScalar ~= forceScalar) then
+                                local force = vector.scale(diffUnit, forceScalar)
+                                netForce = vector.add(netForce, force)
+                            end
+                        end
                     end
                 )
                 vel = vector.add(vel, netForce)
