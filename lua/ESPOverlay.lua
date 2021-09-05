@@ -5,6 +5,8 @@ local worldToScreen = reloadPackage("lua/worldToScreen")
 
 local module = {}
 
+if not entityList then entityList = {} end
+
 function module.create()
     overlay = Overlay.create("UnrealWindow", nil)
     local c = overlay.Canvas
