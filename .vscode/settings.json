@@ -13,6 +13,8 @@
         "reloadPackage",
         "createTimer",
         "entityList",
-        "getTickCount"
+        "getTickCount",
+        "writeFloat",
+        "readSmallInteger"
     ]
 }
