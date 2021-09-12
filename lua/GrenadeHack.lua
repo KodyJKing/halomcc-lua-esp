@@ -13,7 +13,7 @@ local neckOffset = 0x06DC
 
 local updatesPerSecond = 10
 -- local attraction = 10
-local attraction = 10
+local attraction = 100
 local cosAngleLimit = math.cos(math.pi / 24)
 local guaranteedAttrationRange = 2
 local maxSpeed = 1
@@ -51,7 +51,7 @@ function module.create()
                     end
                 )
                 vel = vector.add(vel, netForce)
-                vel = vector.withLength(vel, math.min(maxSpeed, speed)) -- Redirect rather than speed up.
+                vel = vector.withLength(vel, speed) -- Redirect rather than speed up.
                 vector.writeVec(grenadePtr + velocityOffset, vel)
                 --print(json.encode(netForce))
             end

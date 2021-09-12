@@ -15,6 +15,10 @@
         "entityList",
         "getTickCount",
         "writeFloat",
-        "readSmallInteger"
+        "readSmallInteger",
+        "VK_PAUSE",
+        "createHotkey",
+        "beep",
+        "writeToClipboard"
     ]
 }
