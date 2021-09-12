@@ -1,3 +1,5 @@
+local vector = reloadPackage("lua/vector")
+
 local module = {}
 
 if entityList == nil then entityList = {} end
@@ -35,6 +37,10 @@ function module.forNPCs(callback)
             callback(entityPtr)
         end
     end
+end
+
+function module.getBone(entityPtr, index)
+    return vector.readVec(entityPtr + 0x570 + 0x34 * index)
 end
 
 return module

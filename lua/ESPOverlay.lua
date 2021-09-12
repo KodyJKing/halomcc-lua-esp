@@ -2,6 +2,7 @@
 local vector = reloadPackage("lua/vector")
 local Overlay = reloadPackage("lua/Overlay")
 local worldToScreen = reloadPackage("lua/worldToScreen")
+local Entities = reloadPackage("lua/Entities")
 
 local module = {}
 
@@ -58,14 +59,11 @@ function module.create(options)
         -- c.Font.Color = pen.Color
         c.Font.Quality = "fqNonAntialiased"
 
-        -- local f = overlay.form
-        -- local worldToScreenFunc = worldToScreen(f.Width, f.Height)
-
         forDisplayedEntities(
             function(entityPtr, type, isNpc, fp)
                 local neckPos = vector.readVec(entityPtr + 0x6DC)
-                -- local neckPos = vector.readVec(entityPtr + 0x7E0)
                 local np = worldToScreenFunc(neckPos)
+
                 if options.showLines and isNpc and np.depth > 0.1 then
                     c.Line(fp.x, fp.y, np.x, np.y)
                 end
@@ -91,13 +89,11 @@ function module.create(options)
     end
 
     function drawBoneNumbers(entityPtr)
-        local baseBonePtr = entityPtr + 0x570
-        local boneSize = 0x34
-        local NUMBONES = 26
-        for i = 0, NUMBONES - 1 do
-            local bonePos = vector.readVec(baseBonePtr + i * boneSize)
+        local maxNumBones = 32
+        for i = 0, maxNumBones - 1 do
+            local bonePos = Entities.getBone(entityPtr, i)
             local bp = worldToScreenFunc(bonePos)
-            if bp.depth > 0.1 then
+            if bp.depth > 0.1 and bp.worldDepth < 10 then
                 local text = tostring(i)
                 local w = c.getTextWidth(text)
                 c.Font.Color = 0xFFFFFF

@@ -30,6 +30,13 @@ function vector.dist(a, b)
     )
 end
 
+function vector.dist2(a, b)
+    return math.sqrt(
+        (a.x - b.x) ^ 2 +
+        (a.y - b.y) ^ 2
+    )
+end
+
 function vector.addZ(v, z)
     return {
         x = v.x,

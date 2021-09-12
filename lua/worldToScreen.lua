@@ -46,7 +46,8 @@ function worldToScreen(width, height)
         return {
             x = width / 2 - left,
             y = height / 2 - up,
-            depth = depth / w * width
+            depth = depth / w * width,
+            worldDepth = depth
         }
     end
 end
