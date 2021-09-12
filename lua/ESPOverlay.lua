@@ -135,7 +135,7 @@ function module.create(options)
     )
 
     local t = createTimer(overlay.form)
-    t.setInterval(1000 / 60)
+    t.setInterval(1000 / 30)
     t.OnTimer = render
 
     return {
