@@ -97,10 +97,12 @@ function module.create(options)
         for i = 0, NUMBONES - 1 do
             local bonePos = vector.readVec(baseBonePtr + i * boneSize)
             local bp = worldToScreenFunc(bonePos)
-            local text = tostring(i)
-            local w = c.getTextWidth(text)
-            c.Font.Color = 0xFFFFFF
-            c.textOut(bp.x - w / 2, bp.y, text)
+            if bp.depth > 0.1 then
+                local text = tostring(i)
+                local w = c.getTextWidth(text)
+                c.Font.Color = 0xFFFFFF
+                c.textOut(bp.x - w / 2, bp.y, text)
+            end
         end
     end
 
