@@ -32,6 +32,7 @@ function module.create()
                 local velUnit = vector.unit(vel)
                 local netForce = vector.vector(0, 0, 0)
                 Entities.forNPCs(
+                    false,
                     function (npcPtr)
                         local npcType = readSmallInteger(npcPtr)
                         if npcType ~= marineType then
