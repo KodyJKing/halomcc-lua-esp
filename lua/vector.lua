@@ -98,4 +98,12 @@ function vector.withLength(v, length)
     return vector.scale(vector.unit(v), length)
 end
 
+function vector.toString(v, digits)
+    local format = "%." .. digits .. "f"
+    local x = string.format(format, v.x)
+    local y = string.format(format, v.y)
+    local z = string.format(format, v.z)
+    return  x .. ", " .. y .. ", " .. z
+end
+
 return vector

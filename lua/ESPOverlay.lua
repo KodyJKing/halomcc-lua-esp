@@ -10,6 +10,7 @@ local module = {}
 if not entityList then entityList = {} end
 
 local inf = 1 / 0
+local staleTime = 1000
 
 local function toHex(x)
     return string.format("%x", x):upper()
@@ -30,7 +31,7 @@ function module.create(options)
         local currentTime = getTickCount()
         for entityPtr, snapshotTime in pairs(entityList) do
             local snapshotAge = currentTime - snapshotTime
-            local stale = snapshotAge > 100
+            local stale = snapshotAge > staleTime
             if stale then entityList[entityPtr] = nil end
 
             local health = readFloat(entityPtr + 0x9C)
@@ -95,6 +96,10 @@ function module.create(options)
                 if options.showType then showText(toHex(typeNum)) end
                 if options.showPtr then showText(toHex(entityPtr)) end
                 if name and options.showName then showText(name) end
+                if options.showPos then
+                    local pos = vector.readVec(entityPtr + 0x18)
+                    showText(vector.toString(pos, 3))
+                end
 
             end
         )
@@ -143,8 +148,10 @@ function module.create(options)
             local ptr = getEntityUnderReticle()
             if ptr then
                 local type = readSmallInteger(ptr + 0x00)
+                local pos = vector.readVec(ptr + 0x18)
                 print(toHex(ptr))
                 print(toHex(type))
+                print(vector.toString(pos, 3))
                 print("")
                 -- writeToClipboard(text)
                 beep()

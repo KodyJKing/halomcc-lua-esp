@@ -1,0 +1,7 @@
+rax_0 = cx * 12 + [ r12 + 34 ]
+rsi_0 = [ rax_0 + r12 + 8 ]
+entityPtr = r11 + 34 + rsi_0
+
+// or
+
+entityPtr = r11 + 34 + [ cx * 12 + [ r12 + 34 ] + r12 + 8 ]

@@ -19,6 +19,9 @@
         "VK_PAUSE",
         "createHotkey",
         "beep",
-        "writeToClipboard"
+        "writeToClipboard",
+        "getOpenedProcessID",
+        "getForegroundProcess",
+        "readBytes"
     ]
 }
