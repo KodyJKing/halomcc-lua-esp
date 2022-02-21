@@ -5,6 +5,42 @@ local module = {}
 
 if entityList == nil then entityList = {} end
 
+local function chain(bones)
+    local result = {}
+    for i = 1, #bones - 1 do
+        table.insert(result, { bones[i], bones[i + 1] })
+    end
+    return result
+end
+
+local function flatten(arr)
+    local result = {}
+    for _, subArr in ipairs(arr) do
+        for _, elem in ipairs(subArr) do
+            table.insert(result, elem)
+        end
+    end
+    return result
+end
+
+local jackalSkeleton = flatten({
+    chain({ 0, 1, 7, 11, 16 }), -- left leg
+    chain({ 0, 2, 8, 14, 18 }), -- right leg
+    chain({ 0, 3, 9, 12, 21, 22 }), -- spine
+    chain({ 12, 10, 17, 20, 24 }), -- left arm
+    chain({ 12, 13, 19, 23, 25 }), -- right arm
+})
+
+local eliteSkeleton = flatten({
+    chain({ 0, 1, 4, 8, 12 }), -- left leg
+    chain({ 0, 2, 5, 11, 15 }), -- right leg
+    chain({ 0, 3, 6, 9, 14, 17 }), -- spine
+    chain({ 9, 7, 13, 18, 20 }), -- left arm
+    chain({ 9, 10, 16, 19, 21 }), -- right arm
+    chain({ 17, 22, 24 }), -- left mandible
+    chain({ 17, 23, 25 }), -- right mandible
+})
+
 module.entityTypes = {
     player = {
         living = true,
@@ -15,26 +51,37 @@ module.entityTypes = {
         living = true,
         friendly = false,
         headBoneIndex = 22,
+        skeleton = jackalSkeleton
     },
     jackal2 = {
         living = true,
         friendly = false,
         headBoneIndex = 22,
+        skeleton = jackalSkeleton
     },
     grunt = {
         living = true,
         friendly = false,
         headBoneIndex = 12,
+        skeleton = flatten({
+            chain({ 0, 1, 4, 8 }), -- left leg
+            chain({ 0, 2, 5, 11 }), -- right leg
+            chain({ 0, 3, 6, 9, 12 }), -- spine
+            chain({ 9, 7, 13, 15 }), -- left arm
+            chain({ 9, 10, 14, 16 }), -- left arm
+        })
     },
     elite1 = {
         living = true,
         friendly = false,
         headBoneIndex = 17,
+        skeleton = eliteSkeleton
     },
     elite2 = {
         living = true,
         friendly = false,
         headBoneIndex = 17,
+        skeleton = eliteSkeleton
     },
     hunter = {
         living = true,
@@ -44,14 +91,13 @@ module.entityTypes = {
         living = true,
         friendly = true,
         headBoneIndex = 16,
-        skeleton = {
-            { 0, 1 }, { 1, 4 }, { 4, 8 }, -- left leg
-            { 0, 2 }, { 2, 5 }, { 5, 11 }, -- right leg
-            { 0, 3 }, { 3, 6 }, { 6, 9 }, -- torso, hip to neck
-            { 9, 7 }, { 7, 13 }, { 13, 15 }, { 15, 18 }, -- left arm
-            { 9, 10 }, { 10, 14 }, { 14, 17 }, { 17, 19 }, -- right arm
-            { 9, 12 }, { 12, 16 } -- head, lower-neck to skull
-        }
+        skeleton = flatten({
+            chain({ 0, 1, 4, 8 }), -- left leg
+            chain({ 0, 2, 5, 11 }), -- right leg
+            chain({ 0, 3, 6, 9, 12, 16 }), -- spine
+            chain({ 9, 7, 13, 15, 18 }), -- left arm
+            chain({ 9, 10, 14, 17, 19 }), -- right arm
+        })
     },
 }
 

@@ -1034,7 +1034,7 @@ dealloc(newmem)
             <CheatEntry>
               <ID>55</ID>
               <Description>"x"</Description>
-              <LastState Value="31.06976318" RealAddress="1B24598C2B4"/>
+              <LastState Value="23.93162346" RealAddress="1B24598C2B4"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>[playerPtr]+18</Address>
@@ -1042,7 +1042,7 @@ dealloc(newmem)
             <CheatEntry>
               <ID>14</ID>
               <Description>"y"</Description>
-              <LastState Value="-20.20558739" RealAddress="1B24598C2B8"/>
+              <LastState Value="-17.64041138" RealAddress="1B24598C2B8"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>[playerPtr]+1C</Address>
@@ -1050,7 +1050,7 @@ dealloc(newmem)
             <CheatEntry>
               <ID>15</ID>
               <Description>"z"</Description>
-              <LastState Value="88.65296936" RealAddress="1B24598C2BC"/>
+              <LastState Value="89.15773773" RealAddress="1B24598C2BC"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>[playerPtr]+20</Address>
@@ -1090,7 +1090,7 @@ dealloc(newmem)
             <CheatEntry>
               <ID>18</ID>
               <Description>"look x"</Description>
-              <LastState Value="-0.988219142" RealAddress="1B24598C4C4"/>
+              <LastState Value="-0.9419551492" RealAddress="1B24598C4C4"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>[playerPtr]+228</Address>
@@ -1098,7 +1098,7 @@ dealloc(newmem)
             <CheatEntry>
               <ID>19</ID>
               <Description>"look y"</Description>
-              <LastState Value="-0.06839577854" RealAddress="1B24598C4C8"/>
+              <LastState Value="-0.2526236475" RealAddress="1B24598C4C8"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>[playerPtr]+22C</Address>
@@ -1106,7 +1106,7 @@ dealloc(newmem)
             <CheatEntry>
               <ID>20</ID>
               <Description>"look z"</Description>
-              <LastState Value="-0.1369120479" RealAddress="1B24598C4CC"/>
+              <LastState Value="-0.2211374044" RealAddress="1B24598C4CC"/>
               <ShowAsSigned>0</ShowAsSigned>
               <VariableType>Float</VariableType>
               <Address>[playerPtr]+230</Address>
@@ -1233,7 +1233,7 @@ triggerBotTimer.destroy()
         <CheatEntry>
           <ID>96</ID>
           <Description>"CameraWorldMat[0] (forward.x)"</Description>
-          <LastState Value="-0.988219142" RealAddress="7FF98075A6E4"/>
+          <LastState Value="-0.9419551492" RealAddress="7FF98075A6E4"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>halo1.dll+1ADA6E4</Address>
@@ -1348,7 +1348,7 @@ dealloc(newmem)
         <CheatEntry>
           <ID>102</ID>
           <Description>"ESP"</Description>
-          <LastState/>
+          <LastState Activated="1"/>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>{$lua}
 if syntaxcheck then return end
@@ -1368,7 +1368,7 @@ espOverlay = ESPOverlay.create({
   showType = false,
   showPtr = false,
   showName = true,
-  showBoneNumbers = true,
+  showBoneNumbers = false,
   showHeadBone = false,
   showBones = true,
   showPos = false,
@@ -1488,7 +1488,7 @@ dealloc(newmem)
         <CheatEntry>
           <ID>83</ID>
           <Description>"x"</Description>
-          <LastState Value="31.06976318" RealAddress="1B24598C2B4"/>
+          <LastState Value="23.93162346" RealAddress="1B24598C2B4"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>[playerPtr]+18</Address>
@@ -1496,7 +1496,7 @@ dealloc(newmem)
         <CheatEntry>
           <ID>84</ID>
           <Description>"y"</Description>
-          <LastState Value="-20.20558739" RealAddress="1B24598C2B8"/>
+          <LastState Value="-17.64041138" RealAddress="1B24598C2B8"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>[playerPtr]+1C</Address>
@@ -1504,7 +1504,7 @@ dealloc(newmem)
         <CheatEntry>
           <ID>85</ID>
           <Description>"z"</Description>
-          <LastState Value="88.65296936" RealAddress="1B24598C2BC"/>
+          <LastState Value="89.15773773" RealAddress="1B24598C2BC"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>[playerPtr]+20</Address>
@@ -1544,7 +1544,7 @@ dealloc(newmem)
         <CheatEntry>
           <ID>90</ID>
           <Description>"look x"</Description>
-          <LastState Value="-0.988219142" RealAddress="1B24598C4C4"/>
+          <LastState Value="-0.9419551492" RealAddress="1B24598C4C4"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>[playerPtr]+228</Address>
@@ -1552,7 +1552,7 @@ dealloc(newmem)
         <CheatEntry>
           <ID>91</ID>
           <Description>"look y"</Description>
-          <LastState Value="-0.06839577854" RealAddress="1B24598C4C8"/>
+          <LastState Value="-0.2526236475" RealAddress="1B24598C4C8"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>[playerPtr]+22C</Address>
@@ -1560,12 +1560,103 @@ dealloc(newmem)
         <CheatEntry>
           <ID>92</ID>
           <Description>"look z"</Description>
-          <LastState Value="-0.1369120479" RealAddress="1B24598C4CC"/>
+          <LastState Value="-0.2211374044" RealAddress="1B24598C4CC"/>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
           <Address>[playerPtr]+230</Address>
         </CheatEntry>
       </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>103</ID>
+      <Description>"Freeze Others"</Description>
+      <LastState Activated="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : MCC-Win64-Shipping.exe
+  Version: 
+  Date   : 2022-02-21
+  Author : Kody
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(INJECT_Freeze_Others,halo1.dll,48 85 D2 74 05 41 8B CC) // should be unique
+alloc(newmem,$1000,INJECT_Freeze_Others)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  push rax
+{$ccode doUpdate=rax entityPtr=r15}
+  int playerValidation1 = ( *( (int *) (entityPtr + 0x15C) ) ) == 1051635359;
+  int isPlayer = playerValidation1;
+  doUpdate = (long) isPlayer;
+{$asm}
+  cmp rax, 01
+  pop rax
+  jne halo1.dll+B011BE
+
+  test rdx,rdx
+  je halo1.dll+B011BE
+  jmp return
+
+INJECT_Freeze_Others:
+  jmp newmem
+return:
+registersymbol(INJECT_Freeze_Others)
+
+[DISABLE]
+
+INJECT_Freeze_Others:
+  db 48 85 D2 74 05
+
+unregistersymbol(INJECT_Freeze_Others)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: 7FF97F7811B4
+
+7FF97F781188: 48 03 C1                 - add rax,rcx
+7FF97F78118B: 48 0F BF 00              - movsx rax,word ptr [rax]
+7FF97F78118F: 48 8D 35 CA 03 C2 00     - lea rsi,[7FF9803A1560]
+7FF97F781196: 0F B7 FB                 - movzx edi,bx
+7FF97F781199: 48 8B 34 C6              - mov rsi,[rsi+rax*8]
+7FF97F78119D: 48 8B 86 F0 00 00 00     - mov rax,[rsi+000000F0]
+7FF97F7811A4: 48 85 C0                 - test rax,rax
+7FF97F7811A7: 74 29                    - je 7FF97F7811D2
+7FF97F7811A9: 0F 1F 80 00 00 00 00     - nop dword ptr [rax+00000000]
+7FF97F7811B0: 48 8B 50 58              - mov rdx,[rax+58]
+// ---------- INJECTING HERE ----------
+7FF97F7811B4: 48 85 D2                 - test rdx,rdx
+// ---------- DONE INJECTING  ----------
+7FF97F7811B7: 74 05                    - je 7FF97F7811BE
+7FF97F7811B9: 41 8B CC                 - mov ecx,r12d
+7FF97F7811BC: FF D2                    - call rdx
+7FF97F7811BE: 66 FF C7                 - inc di
+7FF97F7811C1: 48 0F BF C7              - movsx rax,di
+7FF97F7811C5: 48 8B 84 C6 F0 00 00 00  - mov rax,[rsi+rax*8+000000F0]
+7FF97F7811CD: 48 85 C0                 - test rax,rax
+7FF97F7811D0: 75 DE                    - jne 7FF97F7811B0
+7FF97F7811D2: 83 7D 7C FF              - cmp dword ptr [rbp+7C],-01
+7FF97F7811D6: 74 08                    - je 7FF97F7811E0
+}
+</AssemblerScript>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Toggle Activation</Action>
+          <Keys>
+            <Key>96</Key>
+          </Keys>
+          <ID>0</ID>
+          <ActivateSound>Activate</ActivateSound>
+          <DeactivateSound>Deactivate</DeactivateSound>
+        </Hotkey>
+      </Hotkeys>
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>
@@ -1646,6 +1737,29 @@ dealloc(newmem)
         <Byte>EB</Byte>
         <Byte>48</Byte>
         <Byte>8B</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Decide If Entity Should Update</Description>
+      <AddressString>halo1.dll+B011B4</AddressString>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>50</Byte>
+        <Byte>58</Byte>
+      </Before>
+      <Actual>
+        <Byte>48</Byte>
+        <Byte>85</Byte>
+        <Byte>D2</Byte>
+      </Actual>
+      <After>
+        <Byte>74</Byte>
+        <Byte>05</Byte>
+        <Byte>41</Byte>
+        <Byte>8B</Byte>
+        <Byte>CC</Byte>
       </After>
     </CodeEntry>
   </CheatCodes>
