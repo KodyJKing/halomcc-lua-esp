@@ -2,29 +2,18 @@ local json = require("lua/json")
 
 local module = {}
 
-local function invertTable(tbl)
-    local res = {}
-    for k, v in pairs(tbl) do
-        res[v] = k
-    end
-    return res
-end
-
 local maps = {
-    {
+    a10 = {
         name = "The Pillar of Autumn",
-        file = "a10.map",
-        size = 96571064
+        file = "a10"
     },
-    {
+    a30 = {
         name = "Halo",
-        file = "a30.map",
-        size = 38355292
+        file = "a30"
     },
-    {
+    a50 = {
         name = "The Truth and Reconciliation",
-        file = "a50.map",
-        size = 54531080,
+        file = "a50",
         entityTypes = {
             player     = 0x569,
             jackal1    = 0xA0C,
@@ -38,10 +27,9 @@ local maps = {
             keyes      = 0x4AF,
         }
     },
-    {
+    b30 = {
         name = "The Silent Cartographer",
-        file = "b30.map",
-        size = 36237008,
+        file = "b30",
         entityTypes = {
             player     = 0x0DD,
             jackal1    = 0xA9C,
@@ -53,10 +41,9 @@ local maps = {
             marine1    = 0x288,
         }
     },
-    {
+    b40 = {
         name = "Assault on the Control Room",
-        file = "b40.map",
-        size = 78880812,
+        file = "b40",
         entityTypes = {
             player     = 0x0CC,
             jackal1    = 0xC00, -- yellow shield
@@ -69,52 +56,50 @@ local maps = {
             sergeant   = 0xC21
         }
     },
-    {
+    c10 = {
         name = "343 Guilty Spark",
-        file = "c10.map",
-        size = 63064936
+        file = "c10"
     },
-    {
+    c20 = {
         name = "The Library",
-        file = "c20.map",
-        size = 55255932
+        file = "c20"
     },
-    {
+    c40 = {
         name = "Two Betrayals",
-        file = "c40.map",
-        size = 79063960
+        file = "c40"
     },
-    {
+    d20 = {
         name = "Keyes",
-        file = "d20.map",
-        size = 61109928
+        file = "d20",
     },
-    {
+    d40 = {
         name = "The Maw",
-        file = "d40.map",
-        size = 94048692
+        file = "d40"
     }
 }
 
-local sizeToMap = {}
-for _, map in ipairs(maps) do
-    sizeToMap[map.size] = map
-    if map.entityTypes then
+local function invertTable(tbl)
+    local res = {}
+    for k, v in pairs(tbl) do
+        res[v] = k
+    end
+    return res
+end
+
+for _, map in pairs(maps) do
+    if map.entityTypes ~= nil then
         map.entityNames = invertTable(map.entityTypes)
     end
 end
 
 function module.getMap()
-    local size = readInteger("halo1.dll+2A4BC04 + 08")
-    return sizeToMap[size]
+    local mapName = readString("halo1.dll+2A52D84+20", 3, false)
+    return maps[mapName]
 end
 
 function module.printMap()
     local map = module.getMap()
-    print(json.encode(map))
+    print(map.name)
 end
-
--- local maps = reloadPackage("lua/maps")
--- maps.printMap()
 
 return module

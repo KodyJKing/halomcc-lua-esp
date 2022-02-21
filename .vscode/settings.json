@@ -22,6 +22,9 @@
         "writeToClipboard",
         "getOpenedProcessID",
         "getForegroundProcess",
-        "readBytes"
+        "readBytes",
+        "bAnd",
+        "readQword",
+        "readString"
     ]
 }

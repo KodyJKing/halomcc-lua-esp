@@ -106,4 +106,24 @@ function vector.toString(v, digits)
     return  x .. ", " .. y .. ", " .. z
 end
 
+function vector.getAngles(v)
+    local h = math.sqrt(v.x * v.x + v.y * v.y)
+    return {
+        yaw = math.atan(v.y, v.x),
+        pitch = math.atan(v.z, h),
+    }
+end
+
+function vector.readAngles(address)
+    return {
+        yaw   = readFloat(address + 0),
+        pitch = readFloat(address + 4),
+    }
+end
+
+function vector.writeAngles(address, angles)
+    writeFloat(address + 0, angles.yaw)
+    writeFloat(address + 4, angles.pitch)
+end
+
 return vector
